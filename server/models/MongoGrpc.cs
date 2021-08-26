@@ -53,6 +53,14 @@ namespace Mongo {
     static readonly grpc::Marshaller<global::Mongo.ReadBlogRequest> __Marshaller_mongo_ReadBlogRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Mongo.ReadBlogRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Mongo.ReadBlogResponse> __Marshaller_mongo_ReadBlogResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Mongo.ReadBlogResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Mongo.UpdateBlogRequest> __Marshaller_mongo_UpdateBlogRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Mongo.UpdateBlogRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Mongo.UpdateBlogResponse> __Marshaller_mongo_UpdateBlogResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Mongo.UpdateBlogResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Mongo.DeleteBlogRequest> __Marshaller_mongo_DeleteBlogRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Mongo.DeleteBlogRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Mongo.DeleteBlogResponse> __Marshaller_mongo_DeleteBlogResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Mongo.DeleteBlogResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Mongo.CreateBlogRequest, global::Mongo.CreateBlogResponse> __Method_CreateBlog = new grpc::Method<global::Mongo.CreateBlogRequest, global::Mongo.CreateBlogResponse>(
@@ -69,6 +77,22 @@ namespace Mongo {
         "ReadBlog",
         __Marshaller_mongo_ReadBlogRequest,
         __Marshaller_mongo_ReadBlogResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Mongo.UpdateBlogRequest, global::Mongo.UpdateBlogResponse> __Method_UpdateBlog = new grpc::Method<global::Mongo.UpdateBlogRequest, global::Mongo.UpdateBlogResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "UpdateBlog",
+        __Marshaller_mongo_UpdateBlogRequest,
+        __Marshaller_mongo_UpdateBlogResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Mongo.DeleteBlogRequest, global::Mongo.DeleteBlogResponse> __Method_DeleteBlog = new grpc::Method<global::Mongo.DeleteBlogRequest, global::Mongo.DeleteBlogResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "DeleteBlog",
+        __Marshaller_mongo_DeleteBlogRequest,
+        __Marshaller_mongo_DeleteBlogResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -88,6 +112,18 @@ namespace Mongo {
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Mongo.ReadBlogResponse> ReadBlog(global::Mongo.ReadBlogRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Mongo.UpdateBlogResponse> UpdateBlog(global::Mongo.UpdateBlogRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Mongo.DeleteBlogResponse> DeleteBlog(global::Mongo.DeleteBlogRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -161,6 +197,46 @@ namespace Mongo {
       {
         return CallInvoker.AsyncUnaryCall(__Method_ReadBlog, null, options, request);
       }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Mongo.UpdateBlogResponse UpdateBlog(global::Mongo.UpdateBlogRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateBlog(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Mongo.UpdateBlogResponse UpdateBlog(global::Mongo.UpdateBlogRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_UpdateBlog, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Mongo.UpdateBlogResponse> UpdateBlogAsync(global::Mongo.UpdateBlogRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateBlogAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Mongo.UpdateBlogResponse> UpdateBlogAsync(global::Mongo.UpdateBlogRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_UpdateBlog, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Mongo.DeleteBlogResponse DeleteBlog(global::Mongo.DeleteBlogRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DeleteBlog(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Mongo.DeleteBlogResponse DeleteBlog(global::Mongo.DeleteBlogRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_DeleteBlog, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Mongo.DeleteBlogResponse> DeleteBlogAsync(global::Mongo.DeleteBlogRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DeleteBlogAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Mongo.DeleteBlogResponse> DeleteBlogAsync(global::Mongo.DeleteBlogRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_DeleteBlog, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override MongoServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -176,7 +252,9 @@ namespace Mongo {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_CreateBlog, serviceImpl.CreateBlog)
-          .AddMethod(__Method_ReadBlog, serviceImpl.ReadBlog).Build();
+          .AddMethod(__Method_ReadBlog, serviceImpl.ReadBlog)
+          .AddMethod(__Method_UpdateBlog, serviceImpl.UpdateBlog)
+          .AddMethod(__Method_DeleteBlog, serviceImpl.DeleteBlog).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -188,6 +266,8 @@ namespace Mongo {
     {
       serviceBinder.AddMethod(__Method_CreateBlog, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Mongo.CreateBlogRequest, global::Mongo.CreateBlogResponse>(serviceImpl.CreateBlog));
       serviceBinder.AddMethod(__Method_ReadBlog, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Mongo.ReadBlogRequest, global::Mongo.ReadBlogResponse>(serviceImpl.ReadBlog));
+      serviceBinder.AddMethod(__Method_UpdateBlog, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Mongo.UpdateBlogRequest, global::Mongo.UpdateBlogResponse>(serviceImpl.UpdateBlog));
+      serviceBinder.AddMethod(__Method_DeleteBlog, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Mongo.DeleteBlogRequest, global::Mongo.DeleteBlogResponse>(serviceImpl.DeleteBlog));
     }
 
   }

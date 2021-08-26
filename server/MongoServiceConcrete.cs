@@ -53,5 +53,43 @@ namespace server
 
             return new ReadBlogResponse() { Blog = blog };
         }
+
+        public override async Task<UpdateBlogResponse> UpdateBlog(UpdateBlogRequest request, ServerCallContext context)
+        {
+            var blog = request.Blog;
+            var filter = new FilterDefinitionBuilder<BsonDocument>().Eq("_id", new ObjectId(blog.Id));
+            var result = mongoCollection.Find(filter).FirstOrDefault();
+
+            if (result == null)
+                throw new RpcException(new Status(StatusCode.NotFound, "The blog with id " + blog.Id + " does not exists"));
+
+            var doc = new BsonDocument("author_id", request.Blog.AuthorId)
+                .Add("title", request.Blog.Title)
+                .Add("content", request.Blog.Content);
+
+            mongoCollection.ReplaceOne(filter, doc);
+
+            Blog blogRes = new Blog()
+            {
+                AuthorId = doc.GetValue("author_id").AsString,
+                Title = doc.GetValue("title").AsString,
+                Content = doc.GetValue("content").AsString
+            };
+            blogRes.Id = blog.Id;
+
+            return new UpdateBlogResponse() { Blog = blogRes };
+        }
+
+        public override async Task<DeleteBlogResponse> DeleteBlog(DeleteBlogRequest request, ServerCallContext context)
+        {
+            var blogId = request.BlogId;
+            var filter = new FilterDefinitionBuilder<BsonDocument>().Eq("_id", new ObjectId(blogId));
+            var result = mongoCollection.DeleteOne(filter);
+
+            if (result.DeletedCount == 0)
+                throw new RpcException(new Status(StatusCode.NotFound, "The blog with id " + blogId + " does not exists"));
+
+            return new DeleteBlogResponse() { BlogId = blogId };
+        }
     }
 }

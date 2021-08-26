@@ -32,20 +32,17 @@ namespace client
 
             var client = new MongoService.MongoServiceClient(channel);
 
-            // WRITE
-            //var response = client.CreateBlog(new CreateBlogRequest()
-            //{
-            //    Blog = new Blog()
-            //    {
-            //        AuthorId = "John",
-            //        Title = "John's blog",
-            //        Content = "Content of the blog"
-            //    }
-            //});
+            //CreateBlog(client);
+            //ReadBlog(client);
+            //UpdateBlog(client);
+            //DeleteBlog(client);
 
-            //Console.WriteLine("The blog with id " + response.Blog.Id + " has been created");
+            channel.ShutdownAsync().Wait();
+            Console.ReadKey();
+        }
 
-            // READ
+        private static void ReadBlog(MongoService.MongoServiceClient client)
+        {
             try
             {
                 var response = client.ReadBlog(new ReadBlogRequest()
@@ -59,9 +56,60 @@ namespace client
             {
                 Console.WriteLine(ex.Status.Detail);
             }
+        }
 
-            channel.ShutdownAsync().Wait();
-            Console.ReadKey();
+        private static void UpdateBlog(MongoService.MongoServiceClient client)
+        {
+            try
+            {
+                var response = client.UpdateBlog(new UpdateBlogRequest()
+                {
+                    Blog = new Blog() {
+                       Id= "61275fd473733887951c63a8",
+                       AuthorId = "updated author",
+                       Content = "updated content",
+                       Title = "updated title"
+                    }
+                });
+
+                Console.WriteLine(response.Blog.ToString());
+            }
+            catch (RpcException ex)
+            {
+                Console.WriteLine(ex.Status.Detail);
+            }
+        }
+
+        private static void DeleteBlog(MongoService.MongoServiceClient client)
+        {
+            try
+            {
+                var response = client.DeleteBlog(new DeleteBlogRequest()
+                {
+                    BlogId = "61275fd473733887951c63a8"
+                });
+
+                Console.WriteLine(response.BlogId.ToString());
+            }
+            catch (RpcException ex)
+            {
+                Console.WriteLine(ex.Status.Detail);
+            }
+        }
+
+        private static void CreateBlog(MongoService.MongoServiceClient client)
+        {
+            var response = client.CreateBlog(new CreateBlogRequest()
+            {
+                Blog = new Blog()
+                {
+                    AuthorId = "John",
+                    Title = "John's blog",
+                    Content = "Content of the blog"
+                }
+            });
+
+            Console.WriteLine("The blog with id " + response.Blog.Id + " has been created");
         }
 
         private static async Task BasicDemo()
