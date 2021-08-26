@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -12,9 +12,26 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="MongoDB.Driver" Version="2.13.1" />
 	</ItemGroup>
 	<ItemGroup>
 		<Protobuf Include="../*.proto" OutputDir="%(RelativePath)models/" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="ssl\ca.crt" />
+	  <None Remove="ssl\server.crt" />
+	  <None Remove="ssl\server.key" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="ssl\ca.crt">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="ssl\server.crt">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="ssl\server.key">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="models\" />

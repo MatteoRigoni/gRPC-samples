@@ -17,6 +17,22 @@
 		<Protobuf Include="../*.proto" OutputDir="%(RelativePath)models/" />
 	</ItemGroup>
 	<ItemGroup>
+	  <None Remove="ssl\ca.crt" />
+	  <None Remove="ssl\client.crt" />
+	  <None Remove="ssl\client.key" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="ssl\ca.crt">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="ssl\client.crt">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="ssl\client.key">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
 	  <Folder Include="models\" />
 	</ItemGroup>
 
